@@ -126,7 +126,7 @@ class TetrisEngine(object):
     def __init__(self, width, height):
         self.width = width
         self.height = height
-        self.board = np.zeros(shape=(width, height), dtype=np.bool)
+        self.board = np.zeros(shape=(width, height), dtype=bool)
 
         self.shapes = Shapes()
         self.actions = Actions()
@@ -207,7 +207,7 @@ class TetrisEngine(object):
         keep_lines, = np.where(~cleared)
         self.cleared_lines += num_cleared
         self.board = np.concatenate([
-            np.zeros(shape=(self.width, num_cleared), dtype=np.bool),
+            np.zeros(shape=(self.width, num_cleared), dtype=bool),
             self.board[:, keep_lines],
         ], axis=1)
         self._update_score(cleared_lines=num_cleared)
