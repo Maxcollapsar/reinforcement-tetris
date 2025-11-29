@@ -13,7 +13,11 @@ class Getch(object):
             self.impl = self.init_unix()
 
     def __call__(self):
-        return self.impl()
+        target = self.impl()
+        if isinstance(target, str):
+            return target
+        else:
+            return target.decode()
 
     def init_windows(self):
         import msvcrt
